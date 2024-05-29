@@ -8,7 +8,7 @@ There are eight employees, named Andrew, David, Jane, Jason, Leslie, Michael, Ma
 There are four locations: the ticket office, the first entrance, the second entrance and the cloakroom.
 These locations require 3, 2, 2, and 1 person respectively.
 
-he variables of the problem are the locations where each employee will work.
+The variables of the problem are the locations where each employee will work.
 
 There are some constraints associated with this problem:
 - each employee must have a unique location;
