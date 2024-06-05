@@ -52,7 +52,7 @@ for i in range(len(locations2)-1):
 debut = time.perf_counter() #debut de la recherche de solutions
 solutions = problem.getSolutions() #résolution du problème
 fin = time.perf_counter() #fin de la recherche de solutions
-print("Durée de la recherche de solutions :",(fin-debut),"s\n") #affichage de la durée de la recherche de solutions
+print("Durée de la recherche de solutions :",(fin-debut),"s") #affichage de la durée de la recherche de solutions
 
 def affichage(num): #fonction pour afficher les employés présents à chaque location dans la solution n°num
     ch = ""
@@ -75,33 +75,10 @@ def affichage2(ind): #fonction pour afficher l'employé associé à l'entier ind
         ch += employes[ind]
     return ch
 
+print("Nombre de solutions : ", len(solutions), "\n")
 #affichage des solutions
 for i in range(len(solutions)):
     print("Solution n°",i+1," :")
     print(affichage(i))
     if (i<len(solutions)-1):
     	print()
-    	
-#Note : plusieurs solutions identiques s'affichent --> problème de symétrie
-
-"""
-Exemple de solutions identiques qui s'affichent :
-Solution n° 1  :
-Dans le guichet : Oliver, Marilyn et Jason
-Dans la premiere entree : Michael et Jane
-Dans la seconde entree : Leslie et Andrew
-Dans les vestiaires : David
-
-Solution n° 3  :
-Dans le guichet : Oliver, Marilyn et Jason
-Dans la premiere entree : Michael et Jane
-Dans la seconde entree : Andrew et Leslie
-Dans les vestiaires : David
-"""
-
-#Note 2 : On est passé d'une centaine de solutions à 36 solutions, ce qui fait un bon gain de temps
-
-"""
-Pour le problème d'ordonnancement des tâches, c'est un cas un peu particulier. Il y a clairement des symétries, mais je ne sais pas encore comment les régler sans trop altérer les tâches.
-Peut-être que je pourrais me pencher dessus dans les jours suivants.
-"""

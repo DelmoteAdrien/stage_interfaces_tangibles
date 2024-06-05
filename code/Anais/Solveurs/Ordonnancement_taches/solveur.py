@@ -37,7 +37,9 @@ problem.addConstraint(lambda A,B,C,D: min_fin_max(A,B,C,D), ("A","B","C","D")) #
 debut = time.perf_counter() #debut de la recherche de solutions
 solutions = problem.getSolutions() #résolution du problème
 fin = time.perf_counter() #fin de la recherche de solutions
-print("Durée de la recherche de solutions :",(fin-debut),"s\n") #affichage de la durée de la recherche de solutions
+print("Durée de la recherche de solutions :",(fin-debut),"s") #affichage de la durée de la recherche de solutions
+
+print("Nombre de solutions : ", len(solutions), "\n")
 
 for i in range(len(solutions)): #affichage des solutions
     print("Solution n°",i+1," :") #affichage du numéro de la solution
@@ -47,9 +49,3 @@ for i in range(len(solutions)): #affichage des solutions
     print("debut de la tache D :", solutions[i]["D"]) #affichage du début de la tâche D dans cette solution
     if (i < len(solutions)-1):
         print() #si on n'est pas à la dernière solution, sauter une ligne
-
-#note : Est-ce que je devrais aussi essayer de minimiser le début maximal d'une tâche ?
-
-#Il y a actuellement 280 solutions données
-
-#note 2 : Grâce aux fonctions fin_max et min_fin_max, maintenant 12 solutions sont données
