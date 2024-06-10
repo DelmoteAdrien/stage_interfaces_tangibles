@@ -1,5 +1,5 @@
 from ortools.sat.python import cp_model
-
+import time
 
 class VarArraySolutionPrinter(cp_model.CpSolverSolutionCallback):
     """Print intermediate solutions."""
@@ -32,7 +32,7 @@ def search_for_all_solutions_sample_sat():
     Humeur = model.new_int_var(1, 3 , "Humeur")
     Handicap= model.new_int_var(1, 4 , "Handicap")
     Duree= model.new_int_var(1, 3 , "Durée")
-
+   
 
     # Boolean variable
     Age_is_1 = model.NewBoolVar('age_is_1')
@@ -83,7 +83,7 @@ def search_for_all_solutions_sample_sat():
 
     #Children with cognitive issues cannot participate in the course.
     model.add(Handicap!=2).OnlyEnforceIf(Age_is_4.Not())
-
+    
 
     # Create a solver and solve.
     solver = cp_model.CpSolver()
@@ -96,4 +96,9 @@ def search_for_all_solutions_sample_sat():
     print(f"Number of solutions found: {solution_printer.solution_count}")
 
 
+start_time= time.time()
 search_for_all_solutions_sample_sat()
+end_time = time.time()
+
+execution_time= end_time-start_time
+print(execution_time)
