@@ -15,6 +15,8 @@ interface inForm: possible
 alpha = "abcdefghijklmnopqrstuvwxyz"
 Alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+#Peut-être faire en sorte que le solveur lise des fichiers
+
 n = int(input("Nombre de billes : "))
 m = int(input("Nombre de boites : "))
 
@@ -23,10 +25,11 @@ model = cp_model.CpModel()
 tab = []
 
 for k in range(n):
-    if (k<=25):
-        tab.append(model.new_int_var(0, m-1, alpha[k]))
-    else:
-        tab.append(model.new_int_var(0, m-1, Alpha[k-26]))
+    name = ""
+    for l in range(k//26):
+        name = alpha[(k//26)-1-l] + name
+    name = Alpha[k%26-1] + name
+    tab.append(model.new_int_var(1, m, name))
 
 for y in range(n):
     for x in range(y+1,n):
@@ -46,10 +49,11 @@ status = solver.solve(model)
 fin = time.perf_counter() #fin de la recherche de solutions
 
 print()
-print("Duree de la recherche de solutions = ",(fin-debut),"s")
+print("Duree de la recherche d'une solution = ",(fin-debut),"s")
 
+#Affichage d'une solution
 if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
     for i in range(n):
-        print(f"{tab[i]} = {solver.value(tab[i])}")
+        print(f"Boite de la bille n°{i+1} = {solver.value(tab[i])}")
 else:
     print("Pas de solution trouvee.")
