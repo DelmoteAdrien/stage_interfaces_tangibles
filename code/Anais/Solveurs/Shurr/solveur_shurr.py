@@ -1,36 +1,32 @@
 import time, collections
 from ortools.sat.python import cp_model
 
-"""
-problème de Shurr :
-Sujet : On a n billes numérotées de 1 à n et m boites.
-But: chaque bille doit être dans les boîtes
-contraint: Pour tout x,y,z numéros de billes dans une même boîte :
-- x=/=2*y
-- x+y!=z
-interface T+C: possible
-interface inForm: possible
-"""
-
 alpha = "abcdefghijklmnopqrstuvwxyz"
 Alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-#Peut-être faire en sorte que le solveur lise des fichiers
-
-n = int(input("Nombre de billes : "))
-m = int(input("Nombre de boites : "))
+n = int(input("Nombre de billes : ")) #saisie du nombre de billes
+m = int(input("Nombre de boites : ")) #saisie du nombre de boites
 
 model = cp_model.CpModel()
 
 tab = []
 
+#initialisation des variables
 for k in range(n):
+    #une manière de nommer les variables permettant en théorie de mettre le nombre de variables qu'on veut
     name = ""
-    for l in range(k//26):
-        name = alpha[(k//26)-1-l] + name
-    name = Alpha[k%26-1] + name
+    n = k//26
+    tab2 = [n]
+    while(n>25):
+        n = n//26
+        tab2.append(n)
+    name = name + alpha[tab2[len(tab2)-1]]
+    for l in range(len(tab2)-1):
+        name = name + alpha[tab2[len(tab2)-1-l]//(26*(len(tab2)-1-l))]
+    name = Alpha[k%26] + name
     tab.append(model.new_int_var(1, m, name))
 
+#initialisation des contraintes
 for y in range(n):
     for x in range(y+1,n):
         if (x==2*y): #Si x=2y, alors les billes n°x et n°y ne doivent pas être dans la même boîte
@@ -49,7 +45,7 @@ status = solver.solve(model)
 fin = time.perf_counter() #fin de la recherche de solutions
 
 print()
-print("Duree de la recherche d'une solution = ",(fin-debut),"s")
+print("Duree de la recherche d'une solution = ",(fin-debut),"s") #affichage de la durée de recherche d'une solution
 
 #Affichage d'une solution
 if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
