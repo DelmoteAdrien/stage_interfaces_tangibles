@@ -1,5 +1,6 @@
 # Résumé Stage: Analyse des contraintes spécifiques aux interfaces tangibles à l’IRIT
 Contexte:
+
 Le projet TUIConstraint vise à exploiter des avancées récentes dans les domaines de
 l’interaction humain-machine et de l’intelligence artificielle. Il s’agit de proposer, concevoir,
 réaliser et évaluer une interface humain-machine permettant de manière tangible (en
@@ -15,9 +16,11 @@ expertes et des contraintes et pour la conception de problèmes intéressants à
 dans ce cadre afin d'aider les utilisateurs à progresser en compétences dans le domaine
 ciblé. On pourra aussi l'utiliser pour guider les acteurs vers des solutions, ou vérifier la
 faisabilité a priori.
-extrait tiré de l’offre de stage :
-https://www.irit.fr/~Florence.Bannay/M2_SUJETSTAGES_2024.html
+
+extrait tiré de l’offre de stage :  https://www.irit.fr/~Florence.Bannay/M2_SUJETSTAGES_2024.html
+
 Mission:
+
 Notre objectif initial consiste, dans un premier temps, à réaliser un état de l’art sur les
 diverses interfaces tangibles existantes, ainsi que des problèmes de satisfaction de
 contraintes (CSP). Ensuite, nous devions combiner ces deux recherches afin de proposer
@@ -29,3 +32,9 @@ l’utilisateur à proposer des choix. Anaïs se charge des problèmes d’affec
 comportant des contraintes temporelles ou spatiales) tels que l’ordonnancement des tâches,
 sudoku, n-reine ou encore le problème du déménageur. Adrien traite des problèmes deconfiguration (contrainte conditionnelle et préférence de l’utilisateur) comme, par exemple, la
 configuration d’un groupe dans un musée ou la configuration d’une voiture.
+
+Contenu du GitHub:
+Ce Git contient 3 dossiers (réunion, code, recherche) avec dans chaque dossier le travail des deux stagiaires séparés (Adrien DELMOTE et Anais CLOTILDE) et le travail en commun.
+Le dossier Recherche se focalise sur l'état de l'art qu'on doit faire.
+Le dossier Code contient les différents solveurs et Benchmark.
+Le dossier Reunion contient les différents diaporamas,notes et rapports de réunion qui se tiens chaque semaine.  
