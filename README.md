@@ -1,4 +1,4 @@
-# Résumé Stage: Analyse des contraintes spécifiques aux interfaces tangibles à l’IRIT
+# Analyse des contraintes spécifiques aux interfaces tangibles à l’IRIT
 Contexte:
 
 Le projet TUIConstraint vise à exploiter des avancées récentes dans les domaines de
@@ -35,6 +35,9 @@ configuration d’un groupe dans un musée ou la configuration d’une voiture.
 
 Contenu du GitHub:
 Ce Git contient 3 dossiers (réunion, code, recherche) avec dans chaque dossier le travail des deux stagiaires séparés (Adrien DELMOTE et Anais CLOTILDE) et le travail en commun.
-Le dossier Recherche se focalise sur l'état de l'art qu'on doit faire.
-Le dossier Code contient les différents solveurs et Benchmark.
-Le dossier Reunion contient les différents diaporamas,notes et rapports de réunion qui se tiens chaque semaine.  
+
+-Le dossier Recherche se focalise sur l'état de l'art qu'on doit faire.
+
+-Le dossier Code contient les différents solveurs et Benchmark.
+
+-Le dossier Reunion contient les différents diaporamas,notes et rapports de réunion qui se tiens chaque semaine.  
