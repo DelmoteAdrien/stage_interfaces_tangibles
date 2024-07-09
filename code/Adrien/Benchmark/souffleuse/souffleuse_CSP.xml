@@ -1,0 +1,573 @@
+<instance><presentation format="XCSP 2.1" type="CSP" name="Blowing Machine">
+ </presentation>
+
+<domains nbDomains="32">
+<domain name="DV0" nbValues="5"> "1-10000" "10001-15000" "15001-22000" "22001-25000" "25001-36000" </domain>
+<domain name="DV1" nbValues="8"> "0.5-0.8" "0.8-1.1" "1.1-1.5" "1.5-1.8" "1.8-2.2" "2.2-2.8" "2.8-3.5" "0.25-0.5" </domain>
+<domain name="DV2" nbValues="5"> "SBO6" "SBO10" "SBO16" "SBO20" "SBO36" </domain>
+<domain name="DV3" nbValues="3"> "Vinyl_Polychlorure" "High_density_Polyethylene" "Polyethylene_teraphtalathe" </domain>
+<domain name="DV4" nbValues="12"> "Beer" "Milk" "Vodka" "Cola_Soda" "Fruit_Soda" "Other_Soda" "Fruit_Juice" "Salad_Sauce" "Mineral_Water" "Sparkling_Water" "Vegetable_Juice" "Phamaceutical_Product" </domain>
+<domain name="DV5" nbValues="7"> "India" "Italy" "Japan" "France" "Russia" "Germany" "Unated_States" </domain>
+<domain name="DV6" nbValues="2"> "No" "Yes" </domain>
+<domain name="DV7" nbValues="3"> "1" "2" "3" </domain>
+<domain name="DV8" nbValues="7"> "0-700" "__out" "0-1500" "0-2000" "0-3000" "0-4000" "0-6000" </domain>
+<domain name="DV9" nbValues="3"> "0-0.5" "__out" "0.50-1" </domain>
+<domain name="DV10" nbValues="5"> "__out" "COM-567" "PRESS-5" "PRESS-7" "XER45-5" </domain>
+<domain name="DV11" nbValues="4"> "__out" "Funnels_only" "Rollers_only" "Funnels+Rollers" </domain>
+<domain name="DV12" nbValues="4"> "__out" "ALP-TR" "DE-67Z" "TR-X12" </domain>
+<domain name="DV13" nbValues="4"> "RGR07" "RLA30" "RPE15" "__out" </domain>
+<domain name="DV14" nbValues="9"> "T/BEG/ENG" "T/BEG/FRA" "T/BEG/ITA" "T/EXP/ENG" "T/EXP/FRA" "T/EXP/ITA" "T/STD/ENG" "T/STD/FRA" "T/STD/ITA" </domain>
+<domain name="DV15" nbValues="3"> "French" "English" "Italian" </domain>
+<domain name="DV16" nbValues="3"> "Shell" "Standard" "Cylindric" </domain>
+<domain name="DV17" nbValues="4"> "Category_A" "Category_B" "Category_C" "Category_D" </domain>
+<domain name="DV18" nbValues="5"> "7" "11" "17" "21" "38" </domain>
+<domain name="DV19" nbValues="3"> "Steel" "Aluminium" "Light_alloy" </domain>
+<domain name="DV20" nbValues="4"> "Shell" "__out" "Standard" "Cylindric" </domain>
+<domain name="DV21" nbValues="5"> "__out" "Category_A" "Category_B" "Category_C" "Category_D" </domain>
+<domain name="DV22" nbValues="6"> "7" "11" "17" "21" "38" "__out" </domain>
+<domain name="DV23" nbValues="4"> "Steel" "__out" "Aluminium" "Light_alloy" </domain>
+<domain name="DV24" nbValues="4"> "Shell" "__out" "Standard" "Cylindric" </domain>
+<domain name="DV25" nbValues="5"> "__out" "Category_A" "Category_B" "Category_C" "Category_D" </domain>
+<domain name="DV26" nbValues="6"> "7" "11" "17" "21" "38" "__out" </domain>
+<domain name="DV27" nbValues="4"> "Steel" "__out" "Aluminium" "Light_alloy" </domain>
+<domain name="DV28" nbValues="2"> "With_Preshapes_Supplier" "Without_Preshapes_Supplier" </domain>
+<domain name="DV29" nbValues="2"> "With_Compressor" "Without_Compressor" </domain>
+<domain name="DV30" nbValues="2"> "Mould_Set_2__Actif" "Mould_Set_2__Inactif" </domain>
+<domain name="DV31" nbValues="2"> "Mould_Set_3__Actif" "Mould_Set_3__Inactif" </domain>
+</domains>
+
+<variables nbVariables="32">
+<variable name="V0" domain="DV0"/>
+<variable name="V1" domain="DV1"/>
+<variable name="V2" domain="DV2"/>
+<variable name="V3" domain="DV3"/>
+<variable name="V4" domain="DV4"/>
+<variable name="V5" domain="DV5"/>
+<variable name="V6" domain="DV6"/>
+<variable name="V7" domain="DV7"/>
+<variable name="V8" domain="DV8"/>
+<variable name="V9" domain="DV9"/>
+<variable name="V10" domain="DV10"/>
+<variable name="V11" domain="DV11"/>
+<variable name="V12" domain="DV12"/>
+<variable name="V13" domain="DV13"/>
+<variable name="V14" domain="DV14"/>
+<variable name="V15" domain="DV15"/>
+<variable name="V16" domain="DV16"/>
+<variable name="V17" domain="DV17"/>
+<variable name="V18" domain="DV18"/>
+<variable name="V19" domain="DV19"/>
+<variable name="V20" domain="DV20"/>
+<variable name="V21" domain="DV21"/>
+<variable name="V22" domain="DV22"/>
+<variable name="V23" domain="DV23"/>
+<variable name="V24" domain="DV24"/>
+<variable name="V25" domain="DV25"/>
+<variable name="V26" domain="DV26"/>
+<variable name="V27" domain="DV27"/>
+<variable name="V28" domain="DV28"/>
+<variable name="V29" domain="DV29"/>
+<variable name="V30" domain="DV30"/>
+<variable name="V31" domain="DV31"/>
+
+</variables>
+
+<relations>
+
+
+<relation name="relV0toV1" arity="2" semantics="supports" nbTuples="22">
+1-10000 1.5-1.8 |
+1-10000 1.8-2.2 |
+1-10000 2.2-2.8 |
+1-10000 2.8-3.5 |
+10001-15000 0.5-0.8 |
+10001-15000 0.8-1.1 |
+10001-15000 1.1-1.5 |
+10001-15000 1.5-1.8 |
+10001-15000 1.8-2.2 |
+15001-22000 0.5-0.8 |
+15001-22000 0.8-1.1 |
+15001-22000 1.1-1.5 |
+15001-22000 1.5-1.8 |
+15001-22000 1.8-2.2 |
+22001-25000 0.5-0.8 |
+22001-25000 0.8-1.1 |
+22001-25000 1.1-1.5 |
+22001-25000 1.5-1.8 |
+22001-25000 1.8-2.2 |
+25001-36000 0.25-0.5 |
+25001-36000 0.5-0.8 |
+25001-36000 0.8-1.1
+</relation>
+
+<relation name="relV4toV3" arity="2" semantics="supports" nbTuples="25">
+Milk Vinyl_Polychlorure |
+Phamaceutical_Product High_density_Polyethylene |
+Beer Polyethylene_teraphtalathe |
+Cola_Soda Polyethylene_teraphtalathe |
+Cola_Soda High_density_Polyethylene |
+Fruit_Soda Polyethylene_teraphtalathe |
+Fruit_Soda High_density_Polyethylene |
+Other_Soda Polyethylene_teraphtalathe |
+Other_Soda High_density_Polyethylene |
+Mineral_Water Polyethylene_teraphtalathe |
+Mineral_Water Vinyl_Polychlorure |
+Sparkling_Water Polyethylene_teraphtalathe |
+Sparkling_Water Vinyl_Polychlorure |
+Fruit_Juice Vinyl_Polychlorure |
+Fruit_Juice Polyethylene_teraphtalathe |
+Fruit_Juice High_density_Polyethylene |
+Vegetable_Juice Vinyl_Polychlorure |
+Vegetable_Juice Polyethylene_teraphtalathe |
+Vegetable_Juice High_density_Polyethylene |
+Salad_Sauce Vinyl_Polychlorure |
+Salad_Sauce Polyethylene_teraphtalathe |
+Salad_Sauce High_density_Polyethylene |
+Vodka Vinyl_Polychlorure |
+Vodka Polyethylene_teraphtalathe |
+Vodka High_density_Polyethylene
+</relation>
+
+<relation name="relV0toV2" arity="2" semantics="supports" nbTuples="12">
+1-10000 SBO6 |
+10001-15000 SBO6 |
+1-10000 SBO10 |
+10001-15000 SBO10 |
+15001-22000 SBO10 |
+15001-22000 SBO16 |
+15001-22000 SBO20 |
+15001-22000 SBO36 |
+22001-25000 SBO20 |
+25001-36000 SBO20 |
+22001-25000 SBO36 |
+25001-36000 SBO36
+</relation>
+
+<relation name="relV4toV2" arity="2" semantics="supports" nbTuples="54">
+Cola_Soda SBO6 |
+Cola_Soda SBO10 |
+Cola_Soda SBO16 |
+Cola_Soda SBO20 |
+Fruit_Soda SBO6 |
+Fruit_Soda SBO10 |
+Fruit_Soda SBO16 |
+Fruit_Soda SBO20 |
+Other_Soda SBO6 |
+Other_Soda SBO10 |
+Other_Soda SBO16 |
+Other_Soda SBO20 |
+Milk SBO6 |
+Milk SBO16 |
+Milk SBO20 |
+Mineral_Water SBO6 |
+Sparkling_Water SBO6 |
+Fruit_Juice SBO6 |
+Vegetable_Juice SBO6 |
+Beer SBO6 |
+Salad_Sauce SBO6 |
+Phamaceutical_Product SBO6 |
+Mineral_Water SBO10 |
+Sparkling_Water SBO10 |
+Fruit_Juice SBO10 |
+Vegetable_Juice SBO10 |
+Beer SBO10 |
+Salad_Sauce SBO10 |
+Phamaceutical_Product SBO10 |
+Vodka SBO10 |
+Mineral_Water SBO16 |
+Sparkling_Water SBO16 |
+Fruit_Juice SBO16 |
+Vegetable_Juice SBO16 |
+Beer SBO16 |
+Salad_Sauce SBO16 |
+Phamaceutical_Product SBO16 |
+Vodka SBO16 |
+Mineral_Water SBO20 |
+Sparkling_Water SBO20 |
+Fruit_Juice SBO20 |
+Vegetable_Juice SBO20 |
+Beer SBO20 |
+Salad_Sauce SBO20 |
+Phamaceutical_Product SBO20 |
+Vodka SBO20 |
+Mineral_Water SBO36 |
+Sparkling_Water SBO36 |
+Fruit_Juice SBO36 |
+Vegetable_Juice SBO36 |
+Beer SBO36 |
+Salad_Sauce SBO36 |
+Milk SBO36 |
+Phamaceutical_Product SBO36 |
+Vodka SBO36
+</relation>
+
+<relation name="relV5toV6" arity="2" semantics="supports" nbTuples="13">
+India Yes |
+France Yes |
+Germany Yes |
+Italy Yes |
+Unated_States Yes |
+Japan Yes |
+Russia Yes |
+France No |
+Germany No |
+Italy No |
+Unated_States No |
+Japan No |
+Russia No
+</relation>
+
+<relation name="relV16toV17" arity="2" semantics="supports" nbTuples="11">
+Shell Category_A |
+Shell Category_B |
+Shell Category_C |
+Cylindric Category_A |
+Cylindric Category_B |
+Cylindric Category_C |
+Cylindric Category_D |
+Standard Category_A |
+Standard Category_B |
+Standard Category_C |
+Standard Category_D
+</relation>
+
+<relation name="relV20toV21" arity="2" semantics="supports" nbTuples="12">
+Shell Category_A |
+Shell Category_B |
+Shell Category_C |
+Cylindric Category_A |
+Cylindric Category_B |
+Cylindric Category_C |
+Cylindric Category_D |
+Standard Category_A |
+Standard Category_B |
+Standard Category_C |
+Standard Category_D |
+__out __out
+</relation>
+
+<relation name="relV24toV25" arity="2" semantics="supports" nbTuples="11">
+Shell Category_A |
+Shell Category_B |
+Shell Category_C |
+Cylindric Category_A |
+Cylindric Category_B |
+Cylindric Category_C |
+Cylindric Category_D |
+Standard Category_A |
+Standard Category_B |
+Standard Category_C |
+Standard Category_D |
+__out __out
+</relation>
+
+<relation name="relV2toV18" arity="2" semantics="supports" nbTuples="5">
+SBO6 7 |
+SBO10 11 |
+SBO16 17 |
+SBO20 21 |
+SBO36 38
+</relation>
+
+<relation name="relV2toV22" arity="2" semantics="supports" nbTuples="10">
+SBO6 __out |
+SBO10 __out |
+SBO16 __out |
+SBO20 __out |
+SBO36 __out |
+SBO6 7 |
+SBO10 11 |
+SBO16 17 |
+SBO20 21 |
+SBO36 38
+</relation>
+
+<relation name="relV2toV26" arity="2" semantics="supports" nbTuples="10">
+SBO6 __out |
+SBO10 __out |
+SBO16 __out |
+SBO20 __out |
+SBO36 __out |
+SBO6 7 |
+SBO10 11 |
+SBO16 17 |
+SBO20 21 |
+SBO36 38
+</relation>
+
+<relation name="relV21toV23" arity="2" semantics="supports" nbTuples="9">
+Category_A Aluminium |
+Category_A Light_alloy |
+Category_B Aluminium |
+Category_B Light_alloy |
+Category_B Steel |
+Category_C Aluminium |
+Category_D Light_alloy |
+Category_D Steel |
+__out __out
+</relation>
+
+<relation name="relV25toV27" arity="2" semantics="supports" nbTuples="9">
+Category_A Aluminium |
+Category_A Light_alloy |
+Category_B Aluminium |
+Category_B Light_alloy |
+Category_B Steel |
+Category_C Aluminium |
+Category_D Light_alloy |
+Category_D Steel |
+__out __out
+</relation>
+
+<relation name="relV17toV19" arity="2" semantics="supports" nbTuples="8">
+Category_A Aluminium |
+Category_A Light_alloy |
+Category_B Aluminium |
+Category_B Light_alloy |
+Category_B Steel |
+Category_C Aluminium |
+Category_D Light_alloy |
+Category_D Steel
+</relation>
+
+<relation name="relV5toV15" arity="2" semantics="supports" nbTuples="13">
+France French |
+France English |
+Unated_States French |
+Unated_States English |
+Japan English |
+India English |
+Russia English |
+Germany French |
+Germany English |
+Germany Italian |
+Italy French |
+Italy English |
+Italy Italian
+</relation>
+
+<relation name="relV15toV14" arity="2" semantics="supports" nbTuples="9">
+French T/STD/FRA |
+French T/BEG/FRA |
+French T/EXP/FRA |
+English T/STD/ENG |
+English T/BEG/ENG |
+English T/EXP/ENG |
+Italian T/STD/ITA |
+Italian T/BEG/ITA |
+Italian T/EXP/ITA
+</relation>
+
+<relation name="relV8toV9toV10" arity="3" semantics="supports" nbTuples="15">
+0-700 0-0.5 COM-567 |
+0-1500 0-0.5 COM-567 |
+0-2000 0-0.5 COM-567 |
+0-700 0.50-1 XER45-5 |
+0-1500 0.50-1 XER45-5 |
+0-2000 0.50-1 XER45-5 |
+0-2000 0-0.5 PRESS-5 |
+0-3000 0-0.5 PRESS-5 |
+0-4000 0-0.5 PRESS-5 |
+0-6000 0-0.5 PRESS-5 |
+0-2000 0.50-1 PRESS-7 |
+0-3000 0.50-1 PRESS-7 |
+0-4000 0.50-1 PRESS-7 |
+0-6000 0.50-1 PRESS-7 |
+__out __out __out
+</relation>
+
+<relation name="relV28toV11" arity="2" semantics="supports" nbTuples="4">
+With_Preshapes_Supplier  Funnels+Rollers |
+With_Preshapes_Supplier  Funnels_only |
+With_Preshapes_Supplier  Rollers_only |
+Without_Preshapes_Supplier __out
+</relation>
+
+<relation name="relV28toV12" arity="2" semantics="supports" nbTuples="5">
+With_Preshapes_Supplier  TR-X12 |
+With_Preshapes_Supplier  ALP-TR |
+With_Preshapes_Supplier  DE-67Z |
+With_Preshapes_Supplier  __out |
+Without_Preshapes_Supplier __out
+</relation>
+
+<relation name="relV28toV13" arity="2" semantics="supports" nbTuples="5">
+With_Preshapes_Supplier  RGR07 |
+With_Preshapes_Supplier  RPE15 |
+With_Preshapes_Supplier  RLA30 |
+With_Preshapes_Supplier  __out |
+Without_Preshapes_Supplier __out
+</relation>
+
+<relation name="relV11toV12" arity="2" semantics="supports" nbTuples="8">
+Funnels+Rollers TR-X12 |
+Funnels+Rollers ALP-TR |
+Funnels+Rollers DE-67Z |
+Funnels_only TR-X12 |
+Funnels_only ALP-TR |
+Funnels_only DE-67Z |
+Rollers_only __out |
+__out __out
+</relation>
+
+<relation name="relV11toV13" arity="2" semantics="supports" nbTuples="8">
+Funnels+Rollers RGR07 |
+Funnels+Rollers RPE15 |
+Funnels+Rollers RLA30 |
+Rollers_only RGR07 |
+Rollers_only RPE15 |
+Rollers_only RLA30 |
+Funnels_only __out |
+__out __out
+</relation>
+
+<relation name="relV29toV8" arity="2" semantics="supports" nbTuples="7">
+With_Compressor 0-700 |
+With_Compressor 0-1500 |
+With_Compressor 0-2000 |
+With_Compressor 0-3000 |
+With_Compressor 0-4000 |
+With_Compressor 0-6000 |
+Without_Compressor __out
+</relation>
+
+<relation name="relV29toV9" arity="2" semantics="supports" nbTuples="3">
+With_Compressor 0-0.5 |
+With_Compressor 0.50-1 |
+Without_Compressor __out
+</relation>
+ |
+<relation name="relV29toV10" arity="2" semantics="supports" nbTuples="5">
+With_Compressor COM-567 |
+With_Compressor XER45-5 |
+With_Compressor PRESS-5 |
+With_Compressor PRESS-7 |
+Without_Compressor __out
+</relation>
+
+<relation name="relV8toV5" arity="2" semantics="supports" nbTuples="14">
+0-700 Germany |
+0-1500 Japan |
+0-2000 Italy |
+0-3000 France |
+0-4000 Unated_States |
+0-6000 India |
+0-4000 Russia |
+__out France |
+__out Germany |
+__out Italy |
+__out Unated_States |
+__out Japan |
+__out India |
+__out Russia
+</relation>
+
+<relation name="relV30toV20" arity="2" semantics="supports" nbTuples="4">
+Mould_Set_2__Actif Shell |
+Mould_Set_2__Actif Cylindric |
+Mould_Set_2__Actif Standard |
+Mould_Set_2__Inactif __out
+</relation>
+
+<relation name="relV30toV21" arity="2" semantics="supports" nbTuples="5">
+Mould_Set_2__Actif Category_A |
+Mould_Set_2__Actif Category_B |
+Mould_Set_2__Actif Category_C |
+Mould_Set_2__Actif Category_D |
+Mould_Set_2__Inactif __out
+</relation>
+
+<relation name="relV30toV22" arity="2" semantics="supports" nbTuples="6">
+Mould_Set_2__Actif 7 |
+Mould_Set_2__Actif 11 |
+Mould_Set_2__Actif 17 |
+Mould_Set_2__Actif 21 |
+Mould_Set_2__Actif 38 |
+Mould_Set_2__Inactif __out
+</relation>
+
+<relation name="relV30toV23" arity="2" semantics="supports" nbTuples="4">
+Mould_Set_2__Actif Aluminium |
+Mould_Set_2__Actif Steel |
+Mould_Set_2__Actif Light_alloy |
+Mould_Set_2__Inactif __out
+</relation>
+
+<relation name="relV31toV24" arity="2" semantics="supports" nbTuples="4">
+Mould_Set_3__Actif Shell |
+Mould_Set_3__Actif Cylindric |
+Mould_Set_3__Actif Standard |
+Mould_Set_3__Inactif __out
+</relation>
+
+<relation name="relV31toV25" arity="2" semantics="supports" nbTuples="5">
+Mould_Set_3__Actif Category_A |
+Mould_Set_3__Actif Category_B |
+Mould_Set_3__Actif Category_C |
+Mould_Set_3__Actif Category_D |
+Mould_Set_3__Inactif __out
+</relation>
+
+<relation name="relV31toV26" arity="2" semantics="supports" nbTuples="6">
+Mould_Set_3__Actif 7 |
+Mould_Set_3__Actif 11 |
+Mould_Set_3__Actif 17 |
+Mould_Set_3__Actif 21 |
+Mould_Set_3__Actif 38 |
+Mould_Set_3__Inactif __out
+</relation>
+
+<relation name="relV31toV27" arity="2" semantics="supports" nbTuples="4">
+Mould_Set_3__Actif Aluminium |
+Mould_Set_3__Actif Steel |
+Mould_Set_3__Actif Light_alloy |
+Mould_Set_3__Inactif __out
+</relation>
+
+<relation name="relV7toV30toV31" arity="3" semantics="supports" nbTuples="3">
+1 Mould_Set_2__Inactif Mould_Set_3__Inactif |
+2 Mould_Set_2__Actif Mould_Set_3__Inactif |
+3 Mould_Set_2__Actif Mould_Set_3__Actif
+</relation>
+
+</relations>
+
+
+<constraints>
+<constraint name="constV0toV1" reference="relV0toV1" scope="V0 V1" />
+<constraint name="constV4toV3" reference="relV4toV3" scope="V4 V3" />
+<constraint name="constV0toV2" reference="relV0toV2" scope="V0 V2" />
+<constraint name="constV4toV2" reference="relV4toV2" scope="V4 V2" />
+<constraint name="constV5toV6" reference="relV5toV6" scope="V5 V6" />
+<constraint name="constV16toV17" reference="relV16toV17" scope="V16 V17" />
+<constraint name="constV20toV21" reference="relV20toV21" scope="V20 V21" />
+<constraint name="constV24toV25" reference="relV24toV25" scope="V24 V25" />
+<constraint name="constV2toV18" reference="relV2toV18" scope="V2 V18" />
+<constraint name="constV2toV22" reference="relV2toV22" scope="V2 V22" />
+<constraint name="constV2toV26" reference="relV2toV26" scope="V2 V26" />
+<constraint name="constV21toV23" reference="relV21toV23" scope="V21 V23" />
+<constraint name="constV25toV27" reference="relV25toV27" scope="V25 V27" />
+<constraint name="constV17toV19" reference="relV17toV19" scope="V17 V19" />
+<constraint name="constV5toV15" reference="relV5toV15" scope="V5 V15" />
+<constraint name="constV15toV14" reference="relV15toV14" scope="V15 V14" />
+<constraint name="constV8toV9toV10" reference="relV8toV9toV10" scope="V8 V9 V10" />
+<constraint name="constV28toV11" reference="relV28toV11" scope="V28 V11" />
+<constraint name="constV28toV12" reference="relV28toV12" scope="V28 V12" />
+<constraint name="constV28toV13" reference="relV28toV13" scope="V28 V13" />
+<constraint name="constV11toV12" reference="relV11toV12" scope="V11 V12" />
+<constraint name="constV11toV13" reference="relV11toV13" scope="V11 V13" />
+<constraint name="constV29toV8" reference="relV29toV8" scope="V29 V8" />
+<constraint name="constV29toV9" reference="relV29toV9" scope="V29 V9" />
+<constraint name="constV29toV10" reference="relV29toV10" scope="V29 V10" />
+<constraint name="constV8toV5" reference="relV8toV5" scope="V8 V5" />
+<constraint name="constV30toV20" reference="relV30toV20" scope="V30 V20" />
+<constraint name="constV30toV21" reference="relV30toV21" scope="V30 V21" />
+<constraint name="constV30toV22" reference="relV30toV22" scope="V30 V22" />
+<constraint name="constV30toV23" reference="relV30toV23" scope="V30 V23" />
+<constraint name="constV31toV24" reference="relV31toV24" scope="V31 V24" />
+<constraint name="constV31toV25" reference="relV31toV25" scope="V31 V25" />
+<constraint name="constV31toV26" reference="relV31toV26" scope="V31 V26" />
+<constraint name="constV31toV27" reference="relV31toV27" scope="V31 V27" />
+<constraint name="constV7toV30to31" reference="relV7toV30toV31" scope="V7 V30 V31" />
+</constraints>
+</instance>
