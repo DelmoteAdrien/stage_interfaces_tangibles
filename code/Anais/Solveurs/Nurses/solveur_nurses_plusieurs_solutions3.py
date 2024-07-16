@@ -100,36 +100,48 @@ def main() -> None:
 
     #Les infirmiers ont un nombre minimal et maximal de jours consécutifs
     for n in all_nurses:
-        #shifts_travail = [[False*num_shifts]*num_days]
-        C1 = nombre_shifts_consecutifs[n][0]
-        C2 = nombre_shifts_consecutifs[n][1]
+        m1 = nombre_shifts_consecutifs[n][0]
+        m2 = nombre_shifts_consecutifs[n][1]
         d = 0
         s = 0
         while (d < num_days):
             d2 = d
             s2 = s
-            D = d2*(s2+1) - d*(s+1)
+            if (s == num_shifts - 1):
+                s3 = 0
+                d3 = d + 1
+            else:
+                s3 = s + 1
+                d3 = d
+            D = 0
             shifts_worked = []
-            while ((d2 < num_days)&(D < C1)&(s2 not in services_repos_deja_decides[n][d2])):
-                shifts_worked.append(shifts[n][d][s])
-                if (s2 == len(all_shifts) - 1):
-                    s2 = 0
-                    d2 += 1
-                else:
-                    s2 += 1
-                D = d2*(s2+1) - d*(s+1)
-            if (len(shifts_worked) == C1):
-                model.add(sum(shifts_worked) == C1)
-                if (s2 == len(all_shifts) - 1):
-                    s2 = 0
-                    d2 += 1
-                else:
-                    s2 += 1
+            while (d2 < num_days):
+                while ((d2 < num_days)&(D < m1)&(s2 not in services_repos_deja_decides[n][d2])):
+                    shifts_worked.append(shifts[n][d2][s2])
+                    if ((s2 == num_shifts - 1)&(d2 < num_days)):
+                        s2 = 0
+                        d2 += 1
+                    elif (d2 < num_days):
+                        s2 += 1
+                    D += 1
+                if ((d2 < num_days)&((D == m1)|(s2 in services_repos_deja_decides[n][d2]))):
+                    if (s2 == num_shifts - 1):
+                        s3 = 0
+                        d3 = d2 + 1
+                    else:
+                        s3 = s2 + 1
+                        d3 = d2
+                d2 += 1
+            if (len(shifts_worked) == m1):
+                model.add(sum(shifts_worked) == m1)
+                d = d3
+                s = s3
             elif (s == len(all_shifts) - 1):
                 s = 0
                 d += 1
             else:
                 s += 1
+    print()
 
     # Creates the solver and solve.
     solver = cp_model.CpSolver()
@@ -184,32 +196,6 @@ def main() -> None:
                                 ch += " et "
                     if (self._solution_count<=self._solution_limit):
                         print(ch)
-            """
-            for d in range(self._num_days):
-                if (self._solution_count<=self._solution_limit):
-                    print(f"Day {d}")
-                for n in range(self._num_nurses):
-                    is_working = False
-                    for s in range(self._num_shifts):
-                        if self.value(self._shifts[(n, d, s)]):
-                            is_working = True
-                            if (self._solution_count<=self._solution_limit):
-                                print(f"  Nurse {n} works shift {s}")
-                    if not is_working:
-                        if (self._solution_count<=self._solution_limit):
-                            print(f"  Nurse {n} does not work")
-            if (self._solution_count<=self._solution_limit):
-                print()
-            """
-            """
-            else:
-                print(f"Solution {self._solution_count} non affichee")
-            """
-            """
-            if self._solution_count >= self._solution_limit:
-                print(f"Stop search after {self._solution_limit} solutions")
-                self.stop_search()
-            """
 
         def solutionCount(self):
             return self._solution_count

@@ -49,16 +49,19 @@ def main() -> None:
             for s in all_shifts:
                 shifts[(n, d, s)] = model.new_bool_var(f"shift_n{n}_d{d}_s{s}")
 
+    """
     # Each shift is assigned to exactly one nurse in the schedule period.
     for d in all_days:
         for s in all_shifts:
             model.add_exactly_one(shifts[(n, d, s)] for n in all_nurses)
+    """
 
     # Each nurse works at most one shift per day.
     for n in all_nurses:
         for d in all_days:
             model.add_at_most_one(shifts[(n, d, s)] for s in all_shifts)
 
+    """
     # Try to distribute the shifts evenly, so that each nurse works
     # min_shifts_per_nurse shifts. If this is not possible, because the total
     # number of shifts is not divisible by the number of nurses, some nurses will
@@ -68,15 +71,18 @@ def main() -> None:
         max_shifts_per_nurse = min_shifts_per_nurse
     else:
         max_shifts_per_nurse = min_shifts_per_nurse + 1
+    """
     for n in all_nurses:
         shifts_worked = []
         for d in all_days:
             for s in all_shifts:
                 shifts_worked.append(shifts[(n, d, s)])
+        """
         #Définition d'un encadrement du nombre de quarts de travail des infirmiers
         #pour répartition équitable
         model.add(min_shifts_per_nurse <= sum(shifts_worked))
         model.add(sum(shifts_worked) <= max_shifts_per_nurse)
+        """
         #Définition d'un encadrement du nombre de quarts de travail des infirmiers
         #selon jour minimal de repos
         model.add(nombre_minimal_repos[n] <= sum(shifts_worked))
@@ -92,85 +98,69 @@ def main() -> None:
                         repos.append(shifts[(n, d, s)])
                 model.add(sum(repos) == 0)
 
+    #initialisation des contraintes
+    for n in all_nurses: #shifts de travail et de repos
+        shifts_travailles = []
+        for d in all_days:
+            for s in all_shifts:
+                if s in services_repos_deja_decides[n][d]: #si on tombe sur un shift de repos déjà décidé
+                    model.add(shifts[(n, d, s)] == 0)
+                shifts_travailles.append(shifts[(n, d, s)])
+        model.add(nombre_shifts_consecutifs[n][0] <= sum(shifts_travailles))
+        model.add(sum(shifts_travailles) <= nombre_shifts_consecutifs[n][1])
+        model.add(nombre_minimal_repos[n] <= num_days*num_shifts - sum(shifts_travailles))
+
+    for d in all_days: #au moins un infirmier par shift
+        for s in all_shifts:
+            shifts_occupes = []
+            for n in all_nurses:
+                shifts_occupes.append(shifts[(n, d, s)])
+            model.add(1 <= sum(shifts_occupes))
+
     #Les infirmiers ont un nombre minimal et maximal de jours consécutifs
     for n in all_nurses:
-        #shifts_travail = [[False*num_shifts]*num_days]
-        C1 = nombre_shifts_consecutifs[n][0]
-        C2 = nombre_shifts_consecutifs[n][1]
+        m1 = nombre_shifts_consecutifs[n][0]
+        m2 = nombre_shifts_consecutifs[n][1]
         d = 0
         s = 0
         while (d < num_days):
             d2 = d
             s2 = s
-            D = d2*(s2+1) - d*(s+1)
+            if (s == num_shifts - 1):
+                s3 = 0
+                d3 = d + 1
+            else:
+                s3 = s + 1
+                d3 = d
+            D = 0
             shifts_worked = []
-            while ((d2 < num_days)&(D < C1)&(s2 not in services_repos_deja_decides[n][d2])):
-                shifts_worked.append(shifts[(n, d2, s2)])
-                if (s2 == len(all_shifts) - 1):
-                    s2 = 0
-                    d2 += 1
-                else:
-                    s2 += 1
-                D = d2*(s2+1) - d*(s+1)
-            if (len(shifts_worked) == C1):
-                model.add(sum(shifts_worked) == C1)
-                """
-                shifts_worked2 = []
-                shifts_worked2[0::(C1-1)] = shifts_worked
-                while ((d2 < num_days)&(D < C2)&(s2 not in services_repos_deja_decides[n][d2])):
-                    if (s2 == len(all_shifts) - 1):
+            while (d2 < num_days):
+                while ((d2 < num_days)&(D < m1)&(s2 not in services_repos_deja_decides[n][d2])):
+                    shifts_worked.append(shifts[(n, d2, s2)])
+                    if ((s2 == num_shifts - 1)&(d2 < num_days)):
                         s2 = 0
                         d2 += 1
-                    else:
+                    elif (d2 < num_days):
                         s2 += 1
-                    D = d2*(s2+1) - d*(s+1)
-                model.add(sum(shifts_worked2) <= C2)
-                """
-                if (s2 == len(all_shifts) - 1):
-                    s2 = 0
-                    d2 += 1
-                else:
-                    s2 += 1
-                """
-                shifts_worked2 = []
-                shifts_worked2[0::(C1-1)] = shifts_worked
-                d3 = d2
-                s3 = s2
-                D = d3*(s3+1) - d*(s+1)
-                while ((d3 < num_days)&(D < C2 + 1)&(s3 not in services_repos_deja_decides[n][d2])):
-                    shifts_worked2.append(shifts[(n, d3, s3)])
-                    model.add(sum(shifts_worked2) <= D)
-                    if (s3 == len(all_shifts) - 1):
+                    D += 1
+                if ((d2 < num_days)&((D == m1)|(s2 in services_repos_deja_decides[n][d2]))):
+                    if (s2 == num_shifts - 1):
                         s3 = 0
-                        d3 += 1
+                        d3 = d2 + 1
                     else:
-                        s3 += 1
-                    D = d3*(s3+1) - d*(s+1)
-                if (len(shifts_worked2) == C2 + 1):
-                    model.add(sum(shifts_worked2) <= C2)
-                    if (s3 == len(all_shifts) - 1):
-                        s = 0
-                        d = d3 + 1
-                    else:
-                        s = s3 + 1
-                        d = d3
-                elif (s2 == len(all_shifts) - 1):
-                    s = 0
-                    d = d2 + 1
-                else:
-                    s = s2 + 1
-                    d = d2
-                """
+                        s3 = s2 + 1
+                        d3 = d2
+                d2 += 1
+            if (len(shifts_worked) == m1):
+                model.add(sum(shifts_worked) == m1)
+                d = d3
+                s = s3
             elif (s == len(all_shifts) - 1):
                 s = 0
                 d += 1
             else:
                 s += 1
-            """
-            for d in all_days:
-                for s in all_shifts:
-                    shifts_worked.append(shifts[(n, d, s)])
-            """
+    print()
 
     # Creates the solver and solve.
     solver = cp_model.CpSolver()
@@ -209,15 +199,6 @@ def main() -> None:
                             print(f"  Nurse {n} does not work")
             if (self._solution_count<=self._solution_limit):
                 print()
-            """
-            else:
-                print(f"Solution {self._solution_count} non affichee")
-            """
-            """
-            if self._solution_count >= self._solution_limit:
-                print(f"Stop search after {self._solution_limit} solutions")
-                self.stop_search()
-            """
 
         def solutionCount(self):
             return self._solution_count
