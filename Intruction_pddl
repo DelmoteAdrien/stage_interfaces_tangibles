@@ -1,0 +1,20 @@
+1- gunzip Metric-FF-v2.1.tgz
+
+2- tar xvf  Metric-FF-v2.1.tar
+
+
+3- sudo apt-get install flex
+
+4-sudo apt-get install flex
+
+5-aller dans main.c trouver l'initialisation de la variable gbracket_count (avec ctrl+f) et mettez extern devant: extren int gbracket_count;
+
+6-de même avec lcurrent_goals dans relax.c
+
+7-aller dans le dossier ff
+
+8-faire make
+
+ATTENTION les fichiers pddl doit être dans le dossier ff + pour lancer ff ./ est nécessaire :  
+ff -o wumpus1.pddl -f wumpus1pb.pddl
+

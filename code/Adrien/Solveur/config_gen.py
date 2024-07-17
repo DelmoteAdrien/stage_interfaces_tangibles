@@ -41,16 +41,16 @@ class VarArraySolutionPrinter(cp_model.CpSolverSolutionCallback):
 
 
         print(self.solution_count)
-        for v in self.__variables:
-            
-            print(f"{v}={self.value(v)}")
-        print()
-
-    @property
-    def solution_count(self) -> int:
         #for v in self.__variables:
             
             #print(f"{v}={self.value(v)}")
+        #print()
+
+    @property
+    def solution_count(self) -> int:
+        for v in self.__variables:
+            
+            print(f"{v}={self.value(v)}")
         return self.__solution_count
 
 
@@ -129,14 +129,14 @@ def search_for_all_solutions_sample(path,assign_value):
     for var,value in assign_value.items():
         model.Add(dict_variable[var]==dict_domain[root.find(f".//variable[@name='{var}']").get("domain")].index(value))
   
-        
+
     # Create a solver and solve.
     solver = cp_model.CpSolver()
     num_variables = len(model.Proto().variables)
     print(f'Nombre de variables utilisées : {num_variables}')
     
     # Obtenir le nombre de contraintes
-    num_constraints = len(model.Proto().variables)
+    num_constraints = len(model.Proto().constraints)
     print(f'Nombre de contraintes : {num_constraints}')
 
     solution_printer = VarArraySolutionPrinter(  [dict_variable[variable] for variable in dict_variable] )
@@ -244,7 +244,7 @@ def variable_choisi(path):
         print("Combinaison : "+str(combination))
         print(" ")
 
-        if combination < 100000:
+        if combination < 20000:
             break
 
         #Look at the variables in the most constrained (tuples)
@@ -295,11 +295,11 @@ def variable_choisi(path):
 
     return assign_value
 
-path= './../renault/small.xml'
+#path= './../renault/small.xml'
+path = './../souffleuse/souffleuse_CSP.xml'
+assign_value= variable_choisi(path)
 
-#assign_value= variable_choisi(path)
 
-assign_value={}
 
 start_time= time.time()
 search_for_all_solutions_sample(path,assign_value)
