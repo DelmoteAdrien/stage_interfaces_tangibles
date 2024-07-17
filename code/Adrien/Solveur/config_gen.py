@@ -295,8 +295,8 @@ def variable_choisi(path):
 
     return assign_value
 
-#path= './../renault/small.xml'
-path = './../souffleuse/souffleuse_CSP.xml'
+#path= './../Benchmark/renault/small.xml'
+path = './../Benchmark/souffleuse/souffleuse_CSP.xml'
 assign_value= variable_choisi(path)
 
 
