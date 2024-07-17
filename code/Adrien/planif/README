@@ -1,11 +1,12 @@
-1- gunzip Metric-FF-v2.1.tgz
+1- gunzip Metric-FF-v2.1.tgz (déjà fait)
 
-2- tar xvf  Metric-FF-v2.1.tar
+
+2- tar xvf  Metric-FF-v2.1.tar (déjà fait)
 
 
 3- sudo apt-get install flex
 
-4-sudo apt-get install flex
+4-sudo apt-get install bison 
 
 5-aller dans main.c trouver l'initialisation de la variable gbracket_count (avec ctrl+f) et mettez extern devant: extren int gbracket_count;
 
