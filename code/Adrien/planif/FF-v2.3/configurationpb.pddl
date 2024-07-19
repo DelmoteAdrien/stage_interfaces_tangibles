@@ -29,7 +29,7 @@
    )
 
   (:goal (and 
-  		(at objetval-1 sqval-231)
+  		(at objetval-1 sqval-231) 
   	     )
   )
 )

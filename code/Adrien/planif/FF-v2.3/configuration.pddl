@@ -19,10 +19,9 @@
 
 
   (:predicates
-   (at ?objet ?square )
+   (at ?objet ?where )
    (istake)
    (take ?objet)
-   (var ?square)
    (selectedvar ?var )
    (selectedtheme ?theme)
   )
